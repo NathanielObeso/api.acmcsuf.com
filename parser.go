@@ -8,7 +8,6 @@ import (
 	"encoding/json"
 	"os"
 	"log"
-	"path/filepath"
 
 	_ "github.com/mattn/go-sqlite3"
 )
@@ -76,12 +75,8 @@ func generateUUID() (string, error) {
 func main() {
 	ctx := context.Background()
 
-	homeDir, err := os.UserHomeDir()
-	if err != nil {
-		log.Fatalf("Failed to detect user home directory: %v", err)
-	}
-	jsonPath := filepath.Join(homeDir, "Downloads", "officers.json")
-	jsonPath2 := filepath.Join(homeDir, "Downloads", "tiers.json")
+	jsonPath := "officers.json"
+	jsonPath2 := "tiers.json"
 
 	fileBytes, err := os.ReadFile(jsonPath)
 	if err != nil {
